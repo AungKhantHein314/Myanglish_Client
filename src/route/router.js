@@ -7,6 +7,7 @@ import Register from '../pages/auth/Register';
 import Login from '../pages/auth/Login';
 import Profile from '../pages/auth/Profile';
 import NotFound from '../pages/exception/NotFound';
+import Features from '../pages/Features';
 
 const UseRouter = () => {
     return (
@@ -14,7 +15,8 @@ const UseRouter = () => {
             <Routes>
                 <Route path="/" element={<Home />} exact/>
                 <Route path="/translate" element={<Translate />} exact/>
-                <Route path="/developerapi" element={<DeveloperAPI />} exact/>
+                <Route path="/developer" element={<DeveloperAPI />} exact/>
+                <Route path="/features" element={<Features />} exact/>
                 <Route path="/register" element={<Register />} exact/>
                 <Route path="/login" element={<Login />} exact/>
                 <Route path="/profile" element={<Profile />} exact/>

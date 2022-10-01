@@ -1,11 +1,11 @@
 import "./styles/App.css";
 import UseRouter from "./route/router";
-import ResponsiveAppBar from "./components/elements/AppBar/ResponsiveAppBar";
+import Header from "./components/layouts/Header";
 
 function App() {
   return (
     <>
-      <ResponsiveAppBar />
+      <Header />
       <UseRouter />
     </>
   );

@@ -3,12 +3,15 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 /**
+  * @param params
   * @param rows
   * @param defaultValue
+  * @param isDisabled
+  * @param label
 **/
 
-export default function InputTextField() {
-  const [value, setValue] = React.useState('Controlled');
+export default function InputTextField(props) {
+  const [value, setValue] = React.useState(props.params.defaultValue);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -18,7 +21,7 @@ export default function InputTextField() {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: '95%' },
       }}
       noValidate
       autoComplete="off"
@@ -26,12 +29,13 @@ export default function InputTextField() {
       <div>
         <TextField
           id="outlined-multiline-static"
-          label="Multiline"
+          label={props.params.label}
           multiline
-          rows={1}
-          defaultValue="Default Value"
+          rows={props.params.rows}
           value={value}
           onChange={handleChange}
+          disabled={props.params.isDisabled}
+          spellCheck="false"
         />
       </div>
     </Box>
