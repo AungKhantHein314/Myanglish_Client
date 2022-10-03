@@ -8,6 +8,8 @@ import Login from '../pages/auth/Login';
 import Profile from '../pages/auth/Profile';
 import NotFound from '../pages/exception/NotFound';
 import Features from '../pages/Features';
+import Verify from '../pages/auth/Verify';
+import Logout from '../pages/auth/Logout';
 
 const UseRouter = () => {
     return (
@@ -19,7 +21,9 @@ const UseRouter = () => {
                 <Route path="/features" element={<Features />} exact/>
                 <Route path="/register" element={<Register />} exact/>
                 <Route path="/login" element={<Login />} exact/>
+                <Route path="/logout" element={<Logout />} exact/>
                 <Route path="/profile" element={<Profile />} exact/>
+                <Route path="/verify/:mail" element={<Verify />} exact/>
                 <Route path="*" element={<NotFound />}/>
             </Routes>
         </Router>

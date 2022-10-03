@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,14 +12,20 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import LanguageIcon from '@mui/icons-material/Language';
+import { getProfile } from '../../redux/features/userSlice';
 
 const pages = ['translate', 'developer', 'features'];
-const settings = ['Profile', 'Account', 'Logout'];
+
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const [settings, setSettings] = React.useState(['Register', 'Login']);
+  const [userName, setUserName] = React.useState("R");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -31,15 +38,26 @@ const Header = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
     setAnchorElUser(null);
   };
+
+  React.useEffect(() => {
+    dispatch(getProfile()).then(data => {
+      if (data.payload.message === "User sent." || data.payload.message === "User not verified.") {
+        setUserName(data.payload.name[0])
+        setSettings(['Profile', 'Logout']);
+      } else {
+        setSettings(['Register', 'Login'])
+      }
+    })
+  }, [])
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <img src="/logo.png" alt="image" style={{ height: 50, borderRadius: 13, marginRight: 15 }} />
           <Typography
             variant="h6"
             noWrap
@@ -96,12 +114,12 @@ const Header = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <LanguageIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -133,7 +151,8 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                <Avatar  sx={{ bgcolor: "purple" }}>{userName}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -153,9 +172,11 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <a key={setting} href={'/' + setting} style={{ textDecoration: "none", color: "black" }}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography>{setting}</Typography>
+                  </MenuItem>
+                </a>
               ))}
             </Menu>
           </Box>

@@ -3,25 +3,29 @@ import { Button as Buttons } from '@mui/material';
 import styled from 'styled-components';
 
 const getButton = props => {
-  return <ButtonStyled {...props}>{props.children}</ButtonStyled>;
+  return <ButtonStyled onClick={props.onclick} {...props}>{props.children}</ButtonStyled>;
 };
 
 /**
- * @param size Button size 'small | medium | large'
+ * @param size fontsize
  * @param variant 'contained | outlined'
  * @param href Link
  * @param bgcolor Custom button color
- * @param startIcon Left icon
- * @param endIcon Right icon
+ * @param onclick
  */
 
 const Button = props => {
-  return props.href ? <Link to={props.href}>{getButton(props)}</Link> : getButton(props);
+  return <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+    {props.href ? <Link to={props.href}>{getButton(props)}</Link> : getButton(props)}
+  </div>
+
 };
 
 export default Button;
 
 const ButtonStyled = styled(Buttons)`
   background-color: ${props => props.bgcolor && props.bgcolor + '!important'};
-  font-size: ${props => props.fontSize.sm}px !important;
+  font-size: ${props => props.size}px !important;
+  color: black;
+  width: ${props => props.width};
 `;

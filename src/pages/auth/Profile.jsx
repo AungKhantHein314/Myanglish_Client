@@ -1,8 +1,9 @@
 import React from 'react';
+import Account from '../../components/pageSections/Profile/Account';
 
 const Profile = () => {
     return (<div>
-        Profile
+        <Account />
     </div>);
 }
 
