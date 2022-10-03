@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -51,13 +51,13 @@ const Header = () => {
         setSettings(['Register', 'Login'])
       }
     })
-  }, [])
+  })
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src="/logo.png" alt="image" style={{ height: 50, borderRadius: 13, marginRight: 15 }} />
+          <img src="/Logo.png" alt="Site Logo" style={{ height: 50, borderRadius: 13, marginRight: 15 }} />
           <Typography
             variant="h6"
             noWrap
