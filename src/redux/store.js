@@ -12,5 +12,5 @@ export const store = configureStore({
     notes: noteReducer,
     translate: translateReducer
   },
-  devTools: true, // false
+  devTools: false, // false
 });

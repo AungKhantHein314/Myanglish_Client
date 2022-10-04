@@ -43,7 +43,9 @@ const Notice = () => {
       }}>
         <Typography variant='h4'> Check Your Email And Verify Your Account </Typography>
         <br />
+        <Typography variant='h5'> Check Your Spam Folder in case you can't find email </Typography>
         <Typography variant='h5'> Didn't receive email? </Typography>
+        <br />
         <br />
         <Typography variant='h5' component="button" onClick={resendHandle}> Resend </Typography>
         {resend && <CustomSnackbar
