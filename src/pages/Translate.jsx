@@ -55,7 +55,7 @@ const Translate = () => {
             <br />
             {/* <Main onClick={handleSwap} inputsParams={inputsParams}/> */}
             {!change && <Main onclick={handleSwap} inputsParams={inputsParams}/>}
-            {prevent && <ModalBox Text="Translation from myanglish to myanmar service is not fully developed. We will notify once the service is available" TextToLink="OK" Link="/translate"/>}
+            {prevent && <ModalBox BoxColor="skyblue" Text="Translation from myanglish to myanmar service is not fully developed. We will notify once the service is available" TextToLink="OK" Link="/translate"/>}
             <Button width="50%" bgcolor="skyblue" varient="contained" size="16" onclick={handleTranslate}> Translate </Button>
             <LabelBottomNavigation />
             {translating && <ModalBox Text={<CircularIndeterminate text="Translating..."/>}></ModalBox>}

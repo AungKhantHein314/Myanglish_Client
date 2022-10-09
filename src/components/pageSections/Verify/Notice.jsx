@@ -11,12 +11,12 @@ const Notice = () => {
     const [canResend, setCanResend] = useState(true);
 
     function resendHandle() {
-        if(resend == true) {
+        if(resend === true) {
             setCanResend(false);
         } else {
             const mail = localStorage.getItem("cryptedMail").replaceAll("/", "%2F");
             dispatch(reverify(mail)).then(data => {
-                if(data.payload.message == "Mail sent again.") {
+                if(data.payload.message === "Mail sent again.") {
                     setResend(true);
                 }
             })

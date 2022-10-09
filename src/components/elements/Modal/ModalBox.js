@@ -15,12 +15,12 @@ import { useNavigate } from "react-router-dom";
 export default function ModalBox(props) {
     const style = {
         position: 'absolute',
+        border: '2px solid #000000',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: {sm: 400, xs: 280},
         bgcolor: props.BoxColor,
-        border: '2px solid #000',
         boxShadow: 24,
         borderRadius: '8px',
         pt: 2,
@@ -43,7 +43,7 @@ export default function ModalBox(props) {
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box sx={{ ...style, width: 400 }}>
+                <Box sx={{ ...style }}>
                     <p id="parent-modal-description">
                         {props.Text}
                     </p>

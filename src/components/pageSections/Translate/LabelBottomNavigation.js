@@ -28,7 +28,6 @@ export default function LabelBottomNavigation() {
     setTimeout(() => {
       setSaveFav(false);
       setRedirect(false);
-      setValue("");
     }, 5000);
   }, [saveFav, redirect, recents, value]);
 
@@ -62,24 +61,28 @@ export default function LabelBottomNavigation() {
           value="recents"
           icon={<RestoreIcon />}
           fontSize="large"
+          onClose={() => setValue("")}
         />
         <BottomNavigationAction
           label="Favorites"
           value="favorites"
           icon={<FavoriteIcon />}
           fontSize="large"
+          onClose={() => setValue("")}
         />
         <BottomNavigationAction
           label="Share"
           value="share"
           icon={<MobileScreenShareIcon />}
           fontSize="large"
+          onClose={() => setValue("")}
         />
         <BottomNavigationAction
           label="Suggest"
           value="suggest"
           icon={<AssistantIcon />}
           fontSize="large"
+          onClose={() => setValue("")}
         />
       </BottomNavigation>
       {value === "suggest" && <Suggestion />}

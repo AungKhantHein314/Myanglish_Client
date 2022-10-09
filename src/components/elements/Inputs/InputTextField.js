@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { InputAdornment } from '@mui/material';
 
 /**
   * @param params {row, defaultValue, isDisabled, value, label}
@@ -10,6 +12,7 @@ import TextField from '@mui/material/TextField';
 
 export default function InputTextField(props) {
   const [value, setValue] = React.useState(props.params.defaultValue);
+  const [iconColor, setIconColor] = React.useState("default");
 
   const handleChange = async (event) => {
     setValue(event.target.value);
@@ -18,6 +21,12 @@ export default function InputTextField(props) {
   React.useEffect(() => {
     props.params.value = value;
   }, [value])
+
+  const copy = (e) => {
+    navigator.clipboard.writeText(value);
+    setIconColor("primary")
+    console.log(e.target);
+  }
 
   return (
     <Box
@@ -36,7 +45,15 @@ export default function InputTextField(props) {
           rows={props.params.rows}
           value={value}
           onChange={handleChange}
-          disabled={props.params.isDisabled}
+          // disabled={props.params.isDisabled}
+          InputProps={{
+            readOnly: props.params.isDisabled,
+            endAdornment: (
+              <InputAdornment position="end">
+                <ContentCopyIcon onClick={copy} color={iconColor}/>
+              </InputAdornment>
+            ),
+          }}
           spellCheck="false"  
         />
       </div>
