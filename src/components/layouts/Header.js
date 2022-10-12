@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import LanguageIcon from '@mui/icons-material/Language';
 import { getProfile } from '../../redux/features/userSlice';
 
 const pages = ['translate', 'developer', 'features'];
@@ -114,7 +113,6 @@ const Header = () => {
               ))}
             </Menu>
           </Box>
-          <LanguageIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
